@@ -2,15 +2,16 @@ package com.example.syl.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
-
-val beige_01 = Color(0xFF8C7764)
-val beige_02 = Color(0xFFA68D77)
-val beige_03 = Color(0xFFBFB6AE)
-val beige_04 = Color(0xFF403B38)
-val beige_05 = Color(0xFFD9D3D0)
 val black = Color(0xFF000000)
 val white = Color(0xFFFFFFFF)
+
+
+val darkBack = Color(0xFF020202)
+val darkBlue = Color(0xFF0F143A)
+val purple = Color(0xFF3C2DB0)
+
+val accentColor = Color(0xFFEE8169)
+
+val LightModeDarkBlue = Color(0xFF1C2044)
+val LightBack = Color(0xFFFAFAFA)
+val lightFont = Color(0xFFC5C6CA)
