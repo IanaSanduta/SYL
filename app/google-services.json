@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970117733735",
+    "project_id": "habbitapp-bcc38",
+    "storage_bucket": "habbitapp-bcc38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970117733735:android:ff8e4bf661134387b3e3c2",
+        "android_client_info": {
+          "package_name": "com.example.syl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970117733735-fng2dk5c999prqd5jji069r599uome9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp9GzCX-VwfvHif_9Qv6wmoQpyM086UQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970117733735-fng2dk5c999prqd5jji069r599uome9u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

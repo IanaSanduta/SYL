@@ -103,14 +103,3 @@ fun ImageWithBackground(
         )
     }
 }
-/*
-Image(
-                        painterResource(R.drawable.ic_logo),
-                        contentDescription = "",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(180.dp)
-                            .padding(10.dp)
-                            .align(Alignment.CenterHorizontally),
-                    )
- */

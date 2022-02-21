@@ -6,10 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.ExtendedFloatingActionButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,8 +39,14 @@ fun HomeScreen(navController: NavController) {
             .fillMaxSize(),
         //contentScale = ContentScale.Crop
     )
+   
 
- */Scaffold(backgroundColor = LightBack) {
+ */
+    
+
+
+    
+    Scaffold(backgroundColor = MaterialTheme.colors.background) {
         ImageWithBackground(
             painter = painterResource(id = R.drawable.newlogo),
             backgroundDrawableResId = R.drawable.newlogo,
@@ -99,28 +103,25 @@ fun HomeScreen(navController: NavController) {
                     color = lightFont
 
                 )
-                Spacer(modifier = Modifier.padding(top = 55.dp))
-                ExtendedFloatingActionButton(
-                    backgroundColor = accentColor,
-                    onClick = {
-                        navController.navigate(Screen.Login.route)
-                    },
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally),
-                    text = {
-                        Text(
-                            "Explore",
-                            fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.button,
-                            color = Color(0xFFFFFFFF),
-                            fontSize = 15.sp,
-                        )
-                    }
-                )
-
+                Spacer(modifier = Modifier.padding(top = 45.dp))
+                Button(
+                    onClick = { navController.navigate(Screen.Login.route) },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.textButtonColors
+                        (
+                        backgroundColor = purple
+                    ),
+                    shape = RoundedCornerShape(40),
+                ) {
+                    Text("Explore",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.button,
+                        color = Color(0xFFFFFFFF),
+                        fontSize = 16.sp,
+                    )
+                }
             }
         }
-
     }
 }
 

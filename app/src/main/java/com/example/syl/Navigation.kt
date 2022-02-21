@@ -19,5 +19,13 @@ fun Navigation(navController : NavController) {
             SignInScreen(navController = navController)
         }
 
+        composable(Screen.Dashboard.route) {
+            DashboardScreen(navController = navController)
+        }
+
+        composable(Screen.Register.route) {
+            RegisterScreen(navController = navController)
+        }
+
     }
 }
