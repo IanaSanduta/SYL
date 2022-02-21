@@ -98,7 +98,7 @@ fun HomeScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.padding(top = 10.dp))
                 Text(
-                    text = "Explore some of the tis to help boos you productivity throughout  the day ",
+                    text = "Explore some of the tips to help boost your productivity throughout  the day ",
                     style = MaterialTheme.typography.body1,
                     color = lightFont
 
