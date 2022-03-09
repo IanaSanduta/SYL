@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.icons.filled.Visibility
@@ -34,16 +35,9 @@ import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.material.ButtonColors as ButtonColors1
-import androidx.compose.material.ButtonDefaults.buttonColors as buttonColors1
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.syl.ui.theme.*
 import com.google.firebase.auth.ktx.auth
@@ -51,6 +45,7 @@ import com.google.firebase.ktx.Firebase
 
 @Composable
 fun SignInScreen(navController: NavController) {
+    val auth = Firebase.auth
 
     var username by remember {
         mutableStateOf("")
@@ -58,6 +53,7 @@ fun SignInScreen(navController: NavController) {
     var password by remember {
         mutableStateOf("")
     }
+
     var isPasswordVisible by remember {
         mutableStateOf(false)
     }
@@ -66,7 +62,8 @@ fun SignInScreen(navController: NavController) {
     }
 
 
-    Scaffold(backgroundColor = LightBack) {
+
+    Scaffold() {
         Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top) {
             Image(
                 painter = painterResource(id = R.drawable.newlogo),
@@ -131,7 +128,10 @@ fun SignInScreen(navController: NavController) {
                         //user.createAccount(username, password)
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        Button(onClick = { navController.navigate(Screen.Dashboard.route) },
+                        Button(
+                            onClick = {
+                           navController.navigate(Screen.Dashboard.route)
+                                         },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.textButtonColors
                                 (
@@ -176,22 +176,3 @@ fun LoginScreenPreview() {
 
 
 ////////
-private fun getUserProfile() {
-    // [START get_user_profile]
-    val user = Firebase.auth.currentUser
-    user?.let {
-        // Name, email address, and profile photo Url
-        val name = user.displayName
-        val email = user.email
-        val photoUrl = user.photoUrl
-
-        // Check if user's email is verified
-        val emailVerified = user.isEmailVerified
-
-        // The user's ID, unique to the Firebase project. Do NOT use this value to
-        // authenticate with your backend server, if you have one. Use
-        // FirebaseUser.getToken() instead.
-        val uid = user.uid
-    }
-    // [END get_user_profile]
-}

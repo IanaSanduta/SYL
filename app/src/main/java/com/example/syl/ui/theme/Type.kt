@@ -21,7 +21,7 @@ val Typography by lazy {
 
 
         body1 = TextStyle(
-            fontFamily = Roboto_regular,
+           // fontFamily = Roboto_regular1,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp
         ),
@@ -32,6 +32,8 @@ val Typography by lazy {
         )
 
     )
+
+
 }
 val Bevietnampro_black = FontFamily(
     Font(R.font.bevietnampro_black),
@@ -44,11 +46,14 @@ val Bevietnampro_extrabold = FontFamily(
 val Bevietnampro_medium = FontFamily(
     Font(R.font.bevietnampro_medium),
 )
-val Roboto_regular = FontFamily(
+
+val Roboto_regular1 = FontFamily(
     Font(R.font.roboto_medium),
     Font(R.font.roboto_light),
     Font(R.font.roboto_regular)
 )
+
+
 val Outfit = FontFamily(
     Font(R.font.outfit_medium),
     Font(R.font.outfit_regular),

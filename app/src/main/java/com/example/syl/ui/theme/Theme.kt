@@ -43,12 +43,12 @@ private val LightColorPalette = lightColors(
 @Composable
 fun SYLTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
     MaterialTheme(
-        colors =if (darkTheme)
+        colors = if (darkTheme)
             DarkColorPalette
          else
             LightColorPalette,
-        typography = Typography,
-        shapes = Shapes,
-        content = content
+            typography = Typography,
+            shapes = Shapes,
+            content = content,
     )
 }

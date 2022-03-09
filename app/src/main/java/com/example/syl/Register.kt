@@ -22,15 +22,22 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.syl.ui.theme.LightBack
-import com.example.syl.ui.theme.accentColor
 import com.example.syl.ui.theme.purple
 
 
 @Composable
-fun RegisterScreen(navController: NavController) {
+fun RegisterScreen(
+    home: () -> Unit,
+    navController: NavController,
+    registerViewModel: RegisterViewModel = viewModel()
+) {
+
+
+
     var username by remember {
         mutableStateOf("")
     }
@@ -43,6 +50,9 @@ fun RegisterScreen(navController: NavController) {
     val isFormValid by derivedStateOf {
         username.isNotBlank() && password.length >= 7
     }
+
+
+
 
     Scaffold(backgroundColor = LightBack) {
         Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top) {
@@ -73,7 +83,7 @@ fun RegisterScreen(navController: NavController) {
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color.Black,
                                 unfocusedBorderColor = Color.Black),
-                            onValueChange = { username = it },
+                            onValueChange = { registerViewModel.updateEmail(it) },
                             label = { Text(text = "E-mail") },
                             singleLine = true,
                             trailingIcon = {
@@ -90,7 +100,7 @@ fun RegisterScreen(navController: NavController) {
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color.Black,
                                 unfocusedBorderColor = Color.Black),
-                            onValueChange = { password = it },
+                            onValueChange = { registerViewModel.updatePassword(it) },
                             label = { Text(text = "Password") },
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
@@ -107,7 +117,11 @@ fun RegisterScreen(navController: NavController) {
                         //user.createAccount(username, password)
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        Button(onClick = { //navController.navigate(Screen.Dashboard.route)
+                        Button(
+                            onClick = {
+                                registerViewModel.registerUser(home = home)
+
+                                //navController.navigate(Screen.Dashboard.route)
                             },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.textButtonColors
@@ -116,7 +130,8 @@ fun RegisterScreen(navController: NavController) {
                             ),
                             shape = RoundedCornerShape(40),
                         ) {
-                            Text("Sign up",
+                            Text(
+                                "Sign up",
                                 fontWeight = FontWeight.Bold,
                                 style = MaterialTheme.typography.button,
                                 color = Color(0xFFFFFFFF),
@@ -136,7 +151,3 @@ fun RegisterScreen(navController: NavController) {
 fun RegisterPreview() {
     RegisterScreen(navController = rememberNavController())
 }
-
-
-
-

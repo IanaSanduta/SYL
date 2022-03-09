@@ -42,33 +42,33 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.syl.ui.theme.SYLTheme
 import com.example.syl.ui.theme.white
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
 
     lateinit var navController: NavHostController
-    
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        FirebaseApp.initializeApp(this)
         setContent {
-            navController = rememberNavController()
-            Navigation(navController = navController)
-
-
+            SYLTheme {
+                navController = rememberNavController()
+                Navigation(navController = navController)
+            }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     SYLTheme {
-        Greeting("Android")
+
     }
 }
 @Composable
