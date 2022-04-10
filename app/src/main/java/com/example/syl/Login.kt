@@ -1,5 +1,6 @@
 package com.example.syl
 
+import android.app.Activity.RESULT_OK
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.OutlinedTextField
@@ -40,6 +41,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.syl.ui.theme.*
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.firebase.ui.auth.data.model.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -173,6 +179,8 @@ fun LoginScreenPreview() {
     SignInScreen(navController = rememberNavController())
 // LoginScreen()
 }
+
+
 
 
 ////////

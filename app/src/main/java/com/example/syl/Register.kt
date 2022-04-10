@@ -27,13 +27,14 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.syl.ui.theme.LightBack
 import com.example.syl.ui.theme.purple
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-
+private lateinit var auth: FirebaseAuth
 @Composable
-fun RegisterScreen(
-    home: () -> Unit,
-    navController: NavController,
-    registerViewModel: RegisterViewModel = viewModel()
+fun RegisterScreen(viewModel: LoginScreenViewModel = viewModel()
+   // navController: NavController
 ) {
 
 
@@ -52,7 +53,7 @@ fun RegisterScreen(
     }
 
 
-
+    auth = Firebase.auth
 
     Scaffold(backgroundColor = LightBack) {
         Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top) {
@@ -83,7 +84,10 @@ fun RegisterScreen(
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color.Black,
                                 unfocusedBorderColor = Color.Black),
-                            onValueChange = { registerViewModel.updateEmail(it) },
+                            onValueChange = {
+                                username = it
+                                //registerViewModel.updateEmail(it)
+                                            },
                             label = { Text(text = "E-mail") },
                             singleLine = true,
                             trailingIcon = {
@@ -100,7 +104,10 @@ fun RegisterScreen(
                             colors = TextFieldDefaults.outlinedTextFieldColors(
                                 focusedBorderColor = Color.Black,
                                 unfocusedBorderColor = Color.Black),
-                            onValueChange = { registerViewModel.updatePassword(it) },
+                            onValueChange = {
+                                            password = it
+                                //registerViewModel.updatePassword(it)
+                            },
                             label = { Text(text = "Password") },
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
@@ -119,7 +126,9 @@ fun RegisterScreen(
 
                         Button(
                             onClick = {
-                                registerViewModel.registerUser(home = home)
+                                viewModel.signInWithEmailAndPassword(username.trim(), password.trim())
+
+                               // registerViewModel.registerUser(home = home)
 
                                 //navController.navigate(Screen.Dashboard.route)
                             },
@@ -146,8 +155,11 @@ fun RegisterScreen(
     }
 }
 
+
 @Composable
 @Preview(showBackground = true)
 fun RegisterPreview() {
-    RegisterScreen(navController = rememberNavController())
+    RegisterScreen(
+        //navController = rememberNavController()
+    )
 }
